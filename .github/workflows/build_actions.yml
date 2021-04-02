@@ -1,4 +1,4 @@
-name: Simple pipeline to build firmware, flash DUT, and run tests
+name: Simple pipeline to build firmware and save generated image
 on: [push]
 
 jobs:
