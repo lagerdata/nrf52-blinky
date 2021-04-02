@@ -1,0 +1,14 @@
+name: Simple pipeline to build firmware, flash DUT, and run tests
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Build Project
+        uses: docker://lagerdata/devenv-cortexm
+        with:
+          entrypoint: /usr/bin/make
