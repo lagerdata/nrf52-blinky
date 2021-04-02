@@ -12,3 +12,10 @@ jobs:
         uses: docker://lagerdata/devenv-cortexm
         with:
           entrypoint: /usr/bin/make
+
+
+      - name: Save hex image
+        uses: actions/upload-artifact@v2
+        with:
+          name: blinky_hex_image
+          path: _build/nrf52840_xxaa.hex
