@@ -16,7 +16,7 @@ jobs: #jobs are independent tasks that can either run serially or in parallel, a
         uses: docker://lagerdata/devenv-cortexm-nrf52
         with:
           entrypoint: /usr/local/bin/cpplint
-          args: ./application/src/*
+          args: /github/workspace/application/src/*
 
       - name: Build Project
         uses: docker://lagerdata/devenv-cortexm-nrf52 #this is a custom "action" that uses the docker image lagerdata/devenv-cortexm hosted at https://hub.docker.com/u/lagerdata

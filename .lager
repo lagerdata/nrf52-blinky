@@ -2,7 +2,7 @@
 
 [DEVENV]
 image = lagerdata/devenv-cortexm-nrf52
-mount_dir = /app
+mount_dir = /github/workspace
 shell = /bin/bash
 cmd.build = make
 cmd.clean = make clean
