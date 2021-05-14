@@ -50,22 +50,19 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include "nrf_delay.h"
-#include "boards.h"
+#include "../../nrf52sdk/components/libraries/delay/nrf_delay.h"
+#include "../../nrf52sdk/components/boards/boards.h"
 
 /**
  * @brief Function for application main entry.
  */
-int main(void)
-{
+int main(void) {
     /* Configure board. */
     bsp_board_init(BSP_INIT_LEDS);
 
     /* Toggle LEDs. */
-    while (true)
-    {
-        for (int i = 0; i < LEDS_NUMBER; i++)
-        {
+    while (true) {
+        for (int i = 0; i < LEDS_NUMBER; i++) {
             bsp_board_led_invert(i);
             nrf_delay_ms(500);
         }

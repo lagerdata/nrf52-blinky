@@ -1,6 +1,10 @@
 name: Simple pipeline to build firmware and save generated image
 on: [push]
 
+concurrency: 
+  group: DUT
+  cancel-in-progress: false
+
 jobs: #jobs are independent tasks that can either run serially or in parallel, and can also depend on the outcome of other jobs
   build: #this the start of the job "build". this can be called anything
     runs-on: ubuntu-latest #what operating system this job will run on
@@ -8,8 +12,14 @@ jobs: #jobs are independent tasks that can either run serially or in parallel, a
       - name: Checkout the code # description of what the step will do. Can call it anything
         uses: actions/checkout@v2 #This is the action being run. Actions hosted on github begin with "actions/" This action will checkout your project
 
+      - name: Run linter
+        uses: docker://lagerdata/devenv-cortexm-nrf52
+        with:
+          entrypoint: /usr/local/bin/cpplint
+          args: ./application/src/*
+
       - name: Build Project
-        uses: docker://lagerdata/devenv-cortexm #this is a custom "action" that uses the docker image lagerdata/devenv-cortexm hosted at https://hub.docker.com/u/lagerdata
+        uses: docker://lagerdata/devenv-cortexm-nrf52 #this is a custom "action" that uses the docker image lagerdata/devenv-cortexm hosted at https://hub.docker.com/u/lagerdata
         with:
           entrypoint: /usr/bin/make #this is the "action" being run. In this case running the "make" command
 
