@@ -1,0 +1,3 @@
+[submodule "devenv-cortexm-nrf52"]
+	path = devenv-cortexm-nrf52
+	url = https://github.com/lagerdata/devenv-cortexm-nrf52
