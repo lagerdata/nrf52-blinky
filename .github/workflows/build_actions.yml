@@ -11,7 +11,9 @@ jobs: #jobs are independent tasks that can either run serially or in parallel, a
     steps: #steps are instructions that a given job will carry out.
       - name: Checkout the code # description of what the step will do. Can call it anything
         uses: actions/checkout@v2 #This is the action being run. Actions hosted on github begin with "actions/" This action will checkout your project
-
+        with:
+          submodules: 'recursive'
+          
       - name: Run linter
         uses: docker://lagerdata/devenv-cortexm-nrf52
         with:
