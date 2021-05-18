@@ -1,6 +1,6 @@
 name: Simple pipeline to build firmware and save generated image
 on:
-  [push]
+  push
   schedule:
     - cron:  '3 * * * *'
 
