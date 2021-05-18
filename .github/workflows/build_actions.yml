@@ -1,8 +1,8 @@
 name: Simple pipeline to build firmware and save generated image
-'on':
+on:
   push:
   schedule:
-    - cron:  "*/20 * * * *"
+    - cron:  "7 3,15 * * *" #build project everyday at hour 3, minute 7, and hour 15 and minute 7 (aka 3:07 and 15:07)
 
 concurrency: 
   group: DUT
