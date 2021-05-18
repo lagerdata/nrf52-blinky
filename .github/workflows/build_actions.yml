@@ -2,7 +2,7 @@ name: Simple pipeline to build firmware and save generated image
 on:
   push:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/10 * * * *'
 
 concurrency: 
   group: DUT
